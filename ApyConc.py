@@ -45,7 +45,6 @@ class mainthread:
 
     def brutalstop(self, closing):
         if closing:
-            updateMessage("Problème d'exécution, ApyConc va se terminer.")
             self.thread.exit()
             self.endApyConc(False)
 
@@ -65,21 +64,24 @@ class mainthread:
 if len(sys.argv) < 3:
     method = r"C:\Users\cletr\OneDrive - Analytiss\DevInformatique\Python\ApyConc\datatest\2021_PHTALATES_NEWLIST_méthode définitive"
     update = r"C:\Users\cletr\OneDrive - Analytiss\DevInformatique\Python\ApyConc\ToUpdate.csv"
-    raise AttributeError(
-        "Il manque des arguments pour le lancement du script ! Ce script doit être appelé : ApyConc.exe <CheminMethodeAMettreAJour> <CheminFichierCSVContenantLesDonneesAImporter>"
-    )
+    # raise AttributeError(
+    #     "Il manque des arguments pour le lancement du script ! Ce script doit être appelé : ApyConc.exe <CheminMethodeAMettreAJour> <CheminFichierCSVContenantLesDonneesAImporter>"
+    # )
 else:
     method = sys.argv[1]
     update = sys.argv[2]
 
 if not (
-    isdir(method)
-    and isfile(join(method, "DAMethod", "Quant", "quantitative.xml"))
-    and method.lower().endswith(".d")
-) or (
-    isdir(method)
-    and isfile(join(method, "5.1", "Method.mmx"))
-    and isfile(join(method, "5.1", "Method.mmx.key"))
+    (
+        isdir(method)
+        and isfile(join(method, "DAMethod", "Quant", "quantitative.xml"))
+        and method.lower().endswith(".d")
+    )
+    or (
+        isdir(method)
+        and isfile(join(method, "5.1", "Method.mmx"))
+        and isfile(join(method, "5.1", "Method.mmx.key"))
+    )
 ):
     raise TypeError(
         "La méthode fournie n'est ni une méthode MassHunter Quant, ni une méthode TraceFinder 5.1 : {}".format(
