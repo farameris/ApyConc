@@ -1,0 +1,3 @@
+[submodule "analytisstools"]
+	path = analytisstools
+	url = https://github.com/farameris/analytisstools
